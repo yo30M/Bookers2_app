@@ -4,7 +4,10 @@
   <p>Opinion:<%= @book.body %></p>
   <p>ユーザーネーム：<%= @book.user.name %></p>
   <% if @book.user == current_user %>
-    <%= link_to "削除", book_path(@book), method: :delete %>
+    <p><%= link_to "Edit", edit_book_path(@book) %></p>
+  <% end %>
+  <% if @book.user == current_user %>
+    <%= link_to "Delete", book_path(@book), method: :delete %>
   <% end %>
 </div>
 <%= render 'new', book: @book %>
