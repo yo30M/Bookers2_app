@@ -8,4 +8,5 @@
     <p>ユーザーネーム:<%= book.user.name %></p>
   </div>
 <% end %>
+<%= render 'users/user-info', user: @user %>
 <%= render 'new', book: @book %>

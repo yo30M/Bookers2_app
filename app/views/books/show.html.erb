@@ -10,4 +10,5 @@
     <%= link_to "Delete", book_path(@book), method: :delete %>
   <% end %>
 </div>
+<%= render 'users/user-info', user: @user %>
 <%= render 'new', book: @book %>
