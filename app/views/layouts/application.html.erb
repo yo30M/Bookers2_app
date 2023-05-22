@@ -11,62 +11,88 @@
   </head>
 
   <body>
-    <header class="navbar navbar-fixed-top navbarinverse">
-      <div class="container">
-        <nav class="nav navbar-left">
-          <span class="title">Bookers</span>
-        </nav>
-        <nav>
-            <ul class="nav navber-nav navbar-right">
-              <% if user_signed_in? %>
-                <li>
-                  <%= link_to user_path(current_user), class:"btn btn-link" do %>
-                  <i class="fas fa-home"></i>
-                  <span> Home</span>
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to users_path class:"btn btn-link" do %>
-                  <span class="glyphicon glyphicon-user" aria-hidden="true"> Users</span>
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to books_path class:"btn btn-link" do %>
-                  <span class="glyphicon glyphicon-book" aria-hidden="true"> Books</span>
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to destroy_user_session_path, method: :delete, class:"btn btn-link" do %>
-                  <span class="glyphicon glyphicon-log-out" aria-hidden="true"> Logout</span>
-                  <% end %>
-                </li>
-              <% else %>
-                <li>
-                  <%= link_to root_path, class:"btn btn-link" do %>
-                  <i class="fas fa-home"></i>
-                  <span> Home</span>
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to "/homes/about", class:"btn btn-link" do %>
-                  <span class="glyphicon glyphicon-link" aria-hidden="true"> About</span>
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to new_user_registration_path class:"btn btn-link" do %>
-                  <span class="glyphicon glyphicon-edit" aria-hidden="true"> Sign up</span>
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to new_user_session_path class:"btn btn-link" do %>
-                  <span class="glyphicon glyphicon-log-in" aria-hidden="true"> Log in</span>
-                  <% end %>
-                </li>
+    <% render 'layouts/notifications.html.haml' %>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <div class="container">
+            <li><%= link_to root_path do %>
+            <font color="ffffff" size=5>Bookers</font>
+            <% end %>
+            </li>
+          <ul class="navbar-nav ml-auto">
+          <% if user_signed_in? %>
+            <li class="nav-link text-light">
+              <li><%= link_to user_path(current_user.id) do %>
+              <i class="fas fa-home text-light"></i>
+              <font color="#ffffff">Homes</font>
               <% end %>
-            </ul>
-        </nav>
-      </div>
+              </li>
+            </li>
+            <li class="nav-link text-light">
+              <li><%= link_to users_path do %>
+              <i class="fas fa-users text-light"></i>
+              <font color="#ffffff">Users</font>
+              <% end %>
+              </li>
+            </li>
+            <li class="nav-link text-light">
+              <li><%= link_to books_path do %>
+              <i class="fas fa-book-open text-light"></i>
+              <font color="#ffffff">Books</font>
+              <% end %>
+              </li>
+            </li>
+            <li class="nav-link text-light">
+              <li><%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="fas fa-sign-out-alt text-light"></i>
+              <font color="#ffffff">Log out</font>
+              <% end %>
+              </li>
+            </li>
+          <% else %>
+              <li class="nav-link text-light">
+              <li><%= link_to root_path do %>
+              <i class="fas fa-home text-light"></i>
+              <font color="#ffffff">Homes</font>
+              <% end %>
+              </li>
+              </li>
+              <li class="nav-link text-light">
+              <li><%= link_to about_path do %>
+              <i class="fas fa-link text-light"></i>
+              <font color="#ffffff">About</font>
+              <% end %>
+              </li>
+              </li>
+              <li class="nav-link text-light">
+              <li><%= link_to new_user_registration_path do %>
+              <i class="fas fa-user-plus text-light"></i>
+              <font color="#ffffff">Sign up</font>
+              <% end %>
+              </li>
+              </li>
+              <li class="nav-link text-light">
+              <li><%= link_to new_user_session_path do %>
+              <i class="fas fa-sign-in-alt text-light"></i>
+              <font color="#ffffff">Log in</font>
+              <% end %>
+              </li>
+              </li>
+          <% end %>
+          </ul>
+        </div>
+      </nav>
     </header>
     <%= yield %>
+    <footer>
+      <div class="container mt-5">
+        <div class="row">
+          <div class="mx-auto">
+            <p>CopyRight Infratop.inc</p>
+          </div>
+        </div>
+
+      </div>
+    </footer>
   </body>
 </html>
