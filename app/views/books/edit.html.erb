@@ -23,8 +23,10 @@
           <%= f.text_area :body, autofocus: true, id:"inputOpinion", placeholder:"Opinion"%>
         </div>
         <div class="form-group">
-          <%= f.submit "Update" %>
+          <%= f.submit "Update Book" %>
         </div>
+        <%= link_to book_path(@book.id) do %>Show<% end %>
+        <%= link_to books_path do %>Back<% end %>
       </div>
     </div>
   </div>
